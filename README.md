@@ -374,7 +374,7 @@ The detailed guides are in Arabic:
 | [`architecture.md`](docs/architecture.md) | Design decisions |
 | [`api-contract.md`](docs/api-contract.md) | Every endpoint and payload |
 | [`test-plan.md`](docs/test-plan.md) | How the system is tested |
-| [`judges-presentation.md`](docs/judges-presentation.md) | Demo script and expected questions |
+
 
 ## Team
 

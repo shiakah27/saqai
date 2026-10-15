@@ -26,6 +26,7 @@ A smart multi-zone irrigation system that measures soil and weather on site, pre
 
 - [The problem](#the-problem)
 - [What SAQAI does](#what-saqai-does)
+- [The prototype](#the-prototype)
 - [Architecture](#architecture)
 - [How a watering decision is made](#how-a-watering-decision-is-made)
 - [When rain starts](#when-rain-starts)
@@ -40,6 +41,7 @@ A smart multi-zone irrigation system that measures soil and weather on site, pre
 - [Repository structure](#repository-structure)
 - [Documentation](#documentation)
 - [Team](#team)
+- [Acknowledgments](#acknowledgments)
 
 ## The problem
 
@@ -56,6 +58,14 @@ Most irrigation runs on a timer. It waters soil that is already wet, and it wate
 | **Explains** | Every decision is stored with its reason and shown step by step on a live dashboard. |
 
 All runtime data comes from real sensors. Historical weather data is used for training only.
+
+## The prototype
+
+<p align="center">
+  <img src="docs/images/prototype.jpg" alt="SAQAI prototype: weather station mast with BME280 and rain plate, three soil zones with moisture probes, pump box and three irrigation valves" width="900">
+</p>
+
+The exhibition model: a weather station mast (BME280 and rain plate) over three soil zones, each with its own moisture probe, fed by one pump through three irrigation valves.
 
 ## Architecture
 
@@ -380,3 +390,20 @@ The detailed guides are in Arabic:
 
 Built by the SAQAI team at Tuwaiq Academy x MISK for the Expo 2030 Riyadh challenge.
 
+| Name | Role | LinkedIn |
+|---|---|---|
+| MEMBER_1_NAME | MEMBER_1_ROLE | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](MEMBER_1_LINKEDIN) |
+| MEMBER_2_NAME | MEMBER_2_ROLE | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](MEMBER_2_LINKEDIN) |
+| MEMBER_3_NAME | MEMBER_3_ROLE | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](MEMBER_3_LINKEDIN) |
+| MEMBER_4_NAME | MEMBER_4_ROLE | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](MEMBER_4_LINKEDIN) |
+
+## Acknowledgments
+
+**Special thanks to all the instructors at [Tuwaiq Academy](https://tuwaiq.edu.sa)** for their guidance, patience and support throughout the program. This project would not exist without what we learned from them.
+
+We are grateful to:
+
+- **[Misk Foundation](https://misk.org.sa)** and **[Tuwaiq Academy](https://tuwaiq.edu.sa)** for the program and the hackathon that made this project possible.
+- **Expo 2030 Riyadh** for the vision that inspired it: sustainable solutions for the cities of tomorrow.
+
+<sub>SAQAI is a student project. It is not an official product of Expo 2030 Riyadh, Misk Foundation or Tuwaiq Academy.</sub>

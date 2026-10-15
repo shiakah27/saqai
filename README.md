@@ -51,7 +51,7 @@ Most irrigation runs on a timer. It waters soil that is already wet, and it wate
 |---|---|
 | **Measures** | Soil moisture in each of 3 zones, plus temperature, humidity, pressure and rain on the plate, every 2 seconds. |
 | **Predicts** | The chance of rain in the next 3 hours, from the station's own readings, every 30 minutes. |
-| **Decides** | On the actuator board itself: 8 questions per zone, then waters only the thirstiest zone (one pump, one valve at a time). |
+| **Decides** | On the actuator board itself: 8 questions per zone, then waters the thirstiest zone (one pump, one valve at a time). |
 | **Protects** | Rain on the sensor stops the pump within seconds, whatever the model said. |
 | **Explains** | Every decision is stored with its reason and shown step by step on a live dashboard. |
 

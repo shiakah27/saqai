@@ -378,8 +378,5 @@ The detailed guides are in Arabic:
 
 ## Team
 
-Built by the SAQAI team at Tuwaiq Academy for the Expo 2030 Riyadh challenge.
+Built by the SAQAI team at Tuwaiq Academy x MISK for the Expo 2030 Riyadh challenge.
 
-## License
-
-[MIT](LICENSE)

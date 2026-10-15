@@ -62,8 +62,10 @@ All runtime data comes from real sensors. Historical weather data is used for tr
 ## The prototype
 
 <p align="center">
- 
-The exhibition model: a weather station mast (BME280 and rain plate) over three soil zones, each with its own moisture probe, fed by one pump through three irrigation valves.
+  <img src="docs/images/prototype.jpg" alt="The SAQAI system as built: weather station mast with BME280 and rain plate, three soil zones with moisture probes, pump box and three irrigation valves" width="900">
+</p>
+
+The real system we built: a weather station mast (BME280 and rain plate) over three soil zones, each with its own moisture probe, fed by one pump through three irrigation valves, with the electronics in a clear enclosure.
 
 ## Architecture
 
@@ -229,7 +231,7 @@ An Arabic, right-to-left interface, live over Server-Sent Events, with light and
 | **The idea** (الفكرة) | Scroll story for visitors: soil → weather → forecast → decision → rain |
 | **Home** (الرئيسية) | Live isometric farm model, zone cards, pump, weather, rain forecast, latest events |
 | **Zones** (المناطق) | One zone in detail with a 24-hour moisture chart and its runs |
-| **Decision** (القرار) | Watering queue and the 8-step decision path for each zone |
+| **Decision** (القرار) | Which zone gets water first, and why each zone was watered, deferred, skipped or held ([how to read it](#reading-the-decision-page)) |
 | **Weather** (الطقس) | Current readings, rain probability gauge, forecast drivers, model card |
 | **Runs** (الري) | Every pump run: duration, estimated litres, result |
 | **Events** (الأحداث) | Rain, lockouts, device connections, newest first |
@@ -250,6 +252,43 @@ An Arabic, right-to-left interface, live over Server-Sent Events, with light and
 </table>
 
 <sub>Screenshots use recorded data from the prototype.</sub>
+
+### Reading the Decision page
+
+The page answers two questions: **who is watered first**, and **why**.
+
+**1. Watering queue.** One pump can feed only one zone at a time, so the zones that need water are ranked by how far they are below their own target:
+
+```
+urgency = (target − moisture) ÷ target
+```
+
+A zone below its *critical* level always ranks first (urgency 1 + deficit). Ties go to the lower zone number.
+
+| Zone | Moisture | Target | Urgency | Queue |
+|---|---|---|---|---|
+| Zone 1 | 29 % | 40 % | 0.28 | **1** · being watered |
+| Zone 3 | 25 % | 30 % | 0.17 | **2** · waits its turn |
+| Zone 2 | 41 % | 35 % | — | – · moist enough |
+
+When zone 1's pulse ends, it soaks for 2 minutes and is measured again, and zone 3 gets the pump in the meantime.
+
+**2. Decision path.** Pick a zone to see the 8 questions ESP32 #2 asked it, in order. Passed steps show ✓ with the reading that passed (for example `29.0% vs target 40%`). The first step that blocks watering is highlighted with its reason, and the steps after it are not asked.
+
+| # | Step | Question | If it blocks |
+|---|---|---|---|
+| 1 | Safety | Any rain, lockout, fault or stale data? | **Hold**: no water at all |
+| 2 | Sensor | Is the soil reading present and valid? | **Skip**: never water on a bad number |
+| 3 | Need | Is the soil below its target? | **Skip**: moist enough |
+| 4 | Soak | Have 2 minutes passed since the last pulse? | **Hold**: let the water reach the probe |
+| 5 | Pulses | Fewer than 3 pulses without reaching target? | **Hold** 30 min: probe may be misplaced |
+| 6 | Daily | Under 5 minutes of watering today? | **Hold** until tomorrow |
+| 7 | Critical | Is the soil below its critical level? | **Water now**, even if rain is forecast |
+| 8 | Forecast | Is the rain probability below 8 %? | **Defer** up to 3 h, then water half |
+
+At the top, the verdict card shows the result: **Irrigate** (with seconds and estimated litres), **Defer**, **Skip** or **Hold**, and the reason in one line.
+
+**How long it waters:** `(target − moisture) × seconds per 1 %` for that zone, +15 % above 40 °C, −10 % when the air is above 60 % humidity, between 3 and 60 seconds (follow-up pulses at most 10 s). Litres are an estimate: `seconds × pump flow ÷ 60`.
 
 ## Hardware
 
@@ -391,9 +430,9 @@ Built by the SAQAI team at Tuwaiq Academy x MISK for the Expo 2030 Riyadh challe
 | Name | Role | LinkedIn |
 |---|---|---|
 | Saikha Alkhathlan | Team leader | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](MEMBER_1_LINKEDIN) |
-| Rana  | MEMBER| [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](MEMBER_2_LINKEDIN) |
-| Renad| MEMBER| [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](MEMBER_3_LINKEDIN) |
-| Norah Alsuwailem| MEMBER| [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](MEMBER_4_LINKEDIN) |
+| Rana | Team member | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](MEMBER_2_LINKEDIN) |
+| Renad | Team member | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](MEMBER_3_LINKEDIN) |
+| Norah Alsuwailem | Team member | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](MEMBER_4_LINKEDIN) |
 
 ## Acknowledgments
 

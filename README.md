@@ -391,9 +391,9 @@ Built by the SAQAI team at Tuwaiq Academy x MISK for the Expo 2030 Riyadh challe
 | Name | Role | LinkedIn |
 |---|---|---|
 | Saikha Alkhathlan | Team leader | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](MEMBER_1_LINKEDIN) |
-| MEMBER_2_NAME | MEMBER| [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](MEMBER_2_LINKEDIN) |
-| MEMBER_3_NAME | MEMBER| [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](MEMBER_3_LINKEDIN) |
-| MEMBER_4_NAME | MEMBER| [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](MEMBER_4_LINKEDIN) |
+| Rana  | MEMBER| [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](MEMBER_2_LINKEDIN) |
+| Renad| MEMBER| [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](MEMBER_3_LINKEDIN) |
+| Norah Alsuwailem| MEMBER| [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](MEMBER_4_LINKEDIN) |
 
 ## Acknowledgments
 

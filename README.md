@@ -62,9 +62,7 @@ All runtime data comes from real sensors. Historical weather data is used for tr
 ## The prototype
 
 <p align="center">
-  <img src="docs/images/prototype.jpg" alt="SAQAI prototype: weather station mast with BME280 and rain plate, three soil zones with moisture probes, pump box and three irrigation valves" width="900">
-</p>
-
+ 
 The exhibition model: a weather station mast (BME280 and rain plate) over three soil zones, each with its own moisture probe, fed by one pump through three irrigation valves.
 
 ## Architecture

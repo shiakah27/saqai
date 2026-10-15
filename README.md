@@ -392,10 +392,10 @@ Built by the SAQAI team at Tuwaiq Academy x MISK for the Expo 2030 Riyadh challe
 
 | Name | Role | LinkedIn |
 |---|---|---|
-| MEMBER_1_NAME | MEMBER_1_ROLE | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](MEMBER_1_LINKEDIN) |
-| MEMBER_2_NAME | MEMBER_2_ROLE | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](MEMBER_2_LINKEDIN) |
-| MEMBER_3_NAME | MEMBER_3_ROLE | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](MEMBER_3_LINKEDIN) |
-| MEMBER_4_NAME | MEMBER_4_ROLE | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](MEMBER_4_LINKEDIN) |
+| Saikha Alkhathlan | Team leader | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](MEMBER_1_LINKEDIN) |
+| MEMBER_2_NAME | MEMBER| [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](MEMBER_2_LINKEDIN) |
+| MEMBER_3_NAME | MEMBER| [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](MEMBER_3_LINKEDIN) |
+| MEMBER_4_NAME | MEMBER| [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](MEMBER_4_LINKEDIN) |
 
 ## Acknowledgments
 

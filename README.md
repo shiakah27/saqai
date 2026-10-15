@@ -250,7 +250,7 @@ An Arabic, right-to-left interface, live over Server-Sent Events, with light and
 | Part | Pin |
 |---|---|
 | BME280 (temperature, humidity, pressure) | SDA → GPIO21 · SCL → GPIO22 · 3V3 |
-| MH-RD rain plate module | AO → GPIO35 · DO → GPIO16 · VCC → **3V3** · 100 kΩ AO→GND |
+| MH-RD rain plate module | AO → GPIO36 · DO → GPIO27 · VCC → **3V3** · 100 kΩ AO→GND |
 | Capacitive soil probes, zones 1–3 | GPIO32 · GPIO33 · GPIO34 (ADC1 only, works with Wi-Fi) |
 
 **ESP32 #2 · actuator node**

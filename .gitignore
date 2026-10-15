@@ -1,0 +1,36 @@
+# Secrets
+.env
+**/.env
+!.env.example
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Data & models: the Riyadh CSV (3.5 MB) and the trained model (19 MB) ARE committed,
+# so a fresh clone can run the AI service without retraining. Only intermediate files are ignored.
+data/processed/*
+!data/processed/.gitkeep
+
+# Arduino secrets (Wi-Fi password, API key)
+esp32/**/secrets.h
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+frontend/dist/
+frontend/dist-demo/
+frontend/dist-preview/
+
+# Build outputs of the firmware unit tests (made by `npm run test:firmware`)
+esp32/tests/test_decision
+esp32/tests/decide_cli

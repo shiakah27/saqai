@@ -1,0 +1,53 @@
+# SAQAI — continuous integration.
+# Runs on every push and pull request:
+#   1. firmware  — the decision engine that runs on ESP32 #2 (saqai_decision.h), 35 unit tests compiled with g++
+#   2. backend   — rain-lockout state machine tests (Jest)
+#   3. dashboard — production build of the React dashboard (Vite)
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  firmware:
+    name: Decision engine (C++)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and run the unit tests
+        run: |
+          g++ -std=c++17 -Wall -Wextra -Werror -Iesp32/actuator_node esp32/tests/test_decision.cpp -o esp32/tests/test_decision
+          ./esp32/tests/test_decision
+
+  backend:
+    name: Backend (Node.js)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: backend/package-lock.json
+      - run: npm ci
+      - run: npm test
+
+  dashboard:
+    name: Dashboard build (React)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+      - run: npm run build

@@ -1,0 +1,268 @@
+{
+  "model_version": "rain_model_v1",
+  "algorithm": "Random Forest",
+  "horizon_hours": 3,
+  "rain_threshold_mm": 0.1,
+  "threshold": 0.08,
+  "features": [
+    "temperature",
+    "humidity",
+    "pressure",
+    "dewpoint",
+    "dewpoint_depression",
+    "dt_1h",
+    "dt_3h",
+    "dh_1h",
+    "dh_3h",
+    "dp_1h",
+    "dp_3h",
+    "hour_sin",
+    "hour_cos",
+    "doy_sin",
+    "doy_cos"
+  ],
+  "trained_at": "2026-10-08T01:51:14+00:00",
+  "data": {
+    "source": "riyadh_hourly_2015_2026.csv",
+    "rows": 102864,
+    "from": "2015-01-01 00:00:00+03:00",
+    "to": "2026-09-25 23:00:00+03:00"
+  },
+  "splits": {
+    "train": [
+      "2015-01-01",
+      "2022-12-31 23:00"
+    ],
+    "calib": [
+      "2023-01-01",
+      "2023-12-31 23:00"
+    ],
+    "thresh": [
+      "2024-01-01",
+      "2024-06-30 23:00"
+    ],
+    "test": [
+      "2024-07-01",
+      "2026-12-31 23:00"
+    ]
+  },
+  "selection": {
+    "Logistic Regression": {
+      "val_pr_auc": 0.1479,
+      "val_roc_auc": 0.8725,
+      "seconds": 0.3
+    },
+    "Decision Tree": {
+      "val_pr_auc": 0.1156,
+      "val_roc_auc": 0.8543,
+      "seconds": 0.3
+    },
+    "Random Forest": {
+      "val_pr_auc": 0.1974,
+      "val_roc_auc": 0.8905,
+      "seconds": 10.0
+    },
+    "LightGBM": {
+      "val_pr_auc": 0.1706,
+      "val_roc_auc": 0.8799,
+      "seconds": 1.7
+    },
+    "XGBoost": {
+      "val_pr_auc": 0.1955,
+      "val_roc_auc": 0.8846,
+      "seconds": 1.2
+    }
+  },
+  "test": {
+    "pr_auc": 0.1721,
+    "roc_auc": 0.929,
+    "precision": 0.1962,
+    "recall": 0.5879,
+    "f1": 0.2942,
+    "accuracy": 0.9519,
+    "confusion": {
+      "tn": 18236,
+      "fp": 795,
+      "fn": 136,
+      "tp": 194
+    },
+    "base_rate": 0.017
+  },
+  "test_always_dry_baseline": {
+    "pr_auc": 0.017,
+    "roc_auc": 0.5,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "accuracy": 0.983,
+    "confusion": {
+      "tn": 19031,
+      "fp": 0,
+      "fn": 330,
+      "tp": 0
+    },
+    "base_rate": 0.017
+  },
+  "onset_recall_test": {
+    "onsets": 77,
+    "warned": 48,
+    "rate": 0.623
+  },
+  "irrigation_backtest_test": {
+    "slots": 1634,
+    "deferred": 80,
+    "confirmed": 18,
+    "false_deferrals": 62,
+    "rain_slots_not_deferred": 19
+  },
+  "feature_importance": [
+    [
+      "dewpoint",
+      0.1783
+    ],
+    [
+      "doy_sin",
+      0.1455
+    ],
+    [
+      "humidity",
+      0.1218
+    ],
+    [
+      "dewpoint_depression",
+      0.1011
+    ],
+    [
+      "doy_cos",
+      0.0825
+    ],
+    [
+      "temperature",
+      0.0663
+    ],
+    [
+      "pressure",
+      0.0662
+    ],
+    [
+      "dt_3h",
+      0.0596
+    ],
+    [
+      "dt_1h",
+      0.0419
+    ],
+    [
+      "dh_3h",
+      0.0283
+    ],
+    [
+      "dp_3h",
+      0.0279
+    ],
+    [
+      "hour_sin",
+      0.0224
+    ],
+    [
+      "hour_cos",
+      0.0218
+    ],
+    [
+      "dp_1h",
+      0.0193
+    ],
+    [
+      "dh_1h",
+      0.0172
+    ]
+  ],
+  "notes": "Trained only on rows where it is not raining at t. Probabilities isotonic-calibrated on 2023.",
+  "threshold_f1_val": 0.1067,
+  "threshold_reason": "Chosen by error cost, not by F1: a false deferral delays watering ≤ 3 h (critical dryness is never deferred), a missed rain wastes water. Same precision as the F1 threshold, much higher recall.",
+  "calibration_test": [
+    {
+      "bin": "0–0.02",
+      "n": 15240,
+      "predicted": 0.002,
+      "actual": 0.002
+    },
+    {
+      "bin": "0.02–0.05",
+      "n": 2022,
+      "predicted": 0.04,
+      "actual": 0.028
+    },
+    {
+      "bin": "0.05–0.08",
+      "n": 1110,
+      "predicted": 0.07,
+      "actual": 0.045
+    },
+    {
+      "bin": "0.08–0.2",
+      "n": 542,
+      "predicted": 0.116,
+      "actual": 0.179
+    },
+    {
+      "bin": "0.2–0.4",
+      "n": 383,
+      "predicted": 0.238,
+      "actual": 0.196
+    },
+    {
+      "bin": "0.4–1.01",
+      "n": 64,
+      "predicted": 0.578,
+      "actual": 0.344
+    }
+  ],
+  "baselines_test": [
+    {
+      "name": "Climatology (month × hour)",
+      "precision": 0.035,
+      "recall": 0.03,
+      "f1": 0.032,
+      "onsets_warned": 3,
+      "onsets": 77,
+      "false_deferrals": 0
+    },
+    {
+      "name": "Humidity ≥ 55%",
+      "precision": 0.137,
+      "recall": 0.412,
+      "f1": 0.205,
+      "onsets_warned": 33,
+      "onsets": 77,
+      "false_deferrals": 98
+    },
+    {
+      "name": "Humidity ≥ 50% and pressure change ≤ 0 hPa/3 h",
+      "precision": 0.137,
+      "recall": 0.242,
+      "f1": 0.175,
+      "onsets_warned": 24,
+      "onsets": 77,
+      "false_deferrals": 19
+    },
+    {
+      "name": "Model (F1 threshold 0.1067)",
+      "precision": 0.201,
+      "recall": 0.33,
+      "f1": 0.25,
+      "onsets_warned": 33,
+      "onsets": 77,
+      "false_deferrals": 34
+    },
+    {
+      "name": "Model (chosen threshold 0.08)",
+      "precision": 0.196,
+      "recall": 0.588,
+      "f1": 0.294,
+      "onsets_warned": 48,
+      "onsets": 77,
+      "false_deferrals": 58
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+# SAQAI — local infrastructure (Phase 1)
+# Runs PostgreSQL in a container so every teammate gets the SAME version and config.
+# Start:  docker compose up -d
+# Stop:   docker compose down          (data is kept in the named volume)
+# Reset:  docker compose down -v       (DELETES all database data)
+
+services:
+  db:
+    image: postgres:16
+    container_name: saqai-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-saqai}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change_me_locally}
+      POSTGRES_DB: ${POSTGRES_DB:-saqai}
+      TZ: UTC
+      PGTZ: UTC
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - saqai_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-saqai} -d ${POSTGRES_DB:-saqai}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  # Optional web UI to browse tables: http://localhost:8080
+  # System: PostgreSQL | Server: db | User/Password/DB: from .env
+  adminer:
+    image: adminer
+    container_name: saqai-adminer
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+volumes:
+  saqai_pgdata:

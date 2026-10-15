@@ -1,0 +1,258 @@
+/* refined.css — طبقة التصميم المصقول "إكسبو مطوّر" فوق styles.css (تُحمَّل بعده فتتقدم عليه).
+   الفكرة: ورق أبيض بارد، خطوط شعرية (hairlines) بدل الظلال الثقيلة، أرقام كبيرة بخط Alexandria،
+   ومساحات واسعة. العنصر المميز الوحيد: المجسّم في الصفحة الرئيسية وتحته "شريط التعريف" مثل بطاقات المتاحف.
+   كل شيء آخر هادئ ومنضبط. الألوان من هوية إكسبو: الأخضر الداكن #003D2B والنعناعي #2BB892. */
+
+/* ---------- المتغيرات: درجات أنعم وخطوط أرق ---------- */
+:root {
+  --bg: #f5f8f6;
+  --surface-2: #f3f7f5;
+  --line: #e1e9e5;
+  --line-2: #edf2ef;
+  --ink: #0b2a20;
+  --ink-2: #44605a;
+  --ink-3: #7a8f87;
+  --lift: 0 1px 0 rgb(11 42 32 / 0.03);
+  --lift-2: 0 24px 48px -28px rgb(11 42 32 / 0.28);
+  --r-xl: 28px;
+  --r-lg: 22px;
+  --gap: 24px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg: #06150f; --surface: #0c1e17; --surface-2: #10261d; --line: #1b3328; --line-2: #142a20; --lift: none; }
+}
+:root[data-theme="dark"] { --bg: #06150f; --surface: #0c1e17; --surface-2: #10261d; --line: #1b3328; --line-2: #142a20; --lift: none; }
+
+body { font-size: 15px; letter-spacing: 0; }
+h2 { font-size: 1.14rem; font-weight: 600; letter-spacing: -0.005em; }
+
+/* ---------- الشريط العلوي: أبيض صافٍ، روابط نصية مع خط سفلي للصفحة الحالية ---------- */
+.topbar { background: color-mix(in oklab, var(--surface) 94%, transparent); border-bottom-color: var(--line); }
+.topbar-in { max-width: 1320px; height: 72px; padding: 0 32px; }
+.toplinks { background: none; border: 0; padding: 0; gap: 4px; }
+.toplinks a { position: relative; padding: 24px 14px; border-radius: 0; font-size: 0.92rem; color: var(--ink-3); }
+.toplinks a .icon { display: none; }
+.toplinks a:hover { background: none; color: var(--ink); }
+.toplinks a.is-active, :root .toplinks a.is-active { background: none; color: var(--ink); font-weight: 600; }
+.toplinks a.is-active::after { content: ''; position: absolute; inset-inline: 14px; bottom: -1px; height: 2px; border-radius: 2px; background: var(--mint); }
+.mode { background: var(--surface-2); border: 1px solid var(--line); color: var(--ink); padding: 7px 14px; font-size: 0.84rem; }
+.icon-btn { width: 40px; height: 40px; border: 1px solid var(--line); }
+
+/* ---------- الصفحة والبطاقات ---------- */
+.main { max-width: 1320px; padding: 32px 32px 72px; }
+.page { gap: var(--gap); }
+.panel { border-radius: var(--r-lg); padding: 26px 28px; box-shadow: var(--lift); }
+.panel-head { margin-bottom: 20px; }
+.state { padding: 4px 11px; font-size: 0.78rem; }
+.btn-ghost { border-width: 1px; font-weight: 600; }
+.seg { background: var(--surface-2); }
+
+/* ---------- الرئيسية: المسرح (المجسّم + شريط التعريف) ---------- */
+.hx-stage { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-xl); overflow: hidden; }
+.hx-model { position: relative; padding: 28px clamp(12px, 4vw, 64px) 8px;
+  background: radial-gradient(70% 60% at 50% 42%, color-mix(in oklab, var(--mint) 9%, var(--surface)), var(--surface) 72%); }
+.hx-model .fieldmap { position: relative; inset: auto; display: block; width: 100%; height: auto; aspect-ratio: 1200 / 640; max-height: 600px; margin: 0 auto; }
+.hx-stage.mode-RAIN_LOCKOUT .hx-model { background: radial-gradient(70% 60% at 50% 42%, color-mix(in oklab, var(--rain) 14%, var(--surface)), var(--surface) 72%); }
+
+/* شريط التعريف: ثلاث خانات بعرض متساوٍ تحت المجسّم، تفصلها خطوط شعرية */
+.hx-rail { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line); }
+.hx-rail li + li { border-inline-start: 1px solid var(--line); }
+.hx-zone { display: grid; gap: 10px; padding: 22px 28px 24px; text-decoration: none; color: inherit; transition: background 0.15s; }
+.hx-zone:hover { background: var(--surface-2); }
+.hx-zone-head { display: flex; align-items: center; gap: 10px; }
+.hx-zone-head b { font-family: var(--font-display); font-weight: 600; font-size: 1.02rem; }
+.hx-swatch { width: 10px; height: 10px; border-radius: 3px; background: var(--zone); transform: rotate(45deg); }
+.hx-state { margin-inline-start: auto; font-size: 0.8rem; font-weight: 600; color: var(--ink-3); display: inline-flex; align-items: center; gap: 6px; }
+.hx-state::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.hx-state.tone-water { color: var(--water); }
+.hx-state.tone-good { color: var(--good); }
+.hx-state.tone-warn { color: var(--warn); }
+.hx-state.tone-crit { color: var(--crit); }
+.hx-state.tone-rain { color: var(--rain); }
+.hx-zone.st-running .hx-state::before { animation: pulse 1.6s infinite; }
+.hx-zone-value { font-family: var(--font-display); font-weight: 700; font-size: clamp(2.2rem, 3.4vw, 3rem); line-height: 1; letter-spacing: -0.02em; color: var(--ink); }
+.hx-zone-value small { font-size: 0.42em; font-weight: 500; color: var(--ink-3); margin-inline-start: 2px; }
+.hx-meter { position: relative; height: 6px; border-radius: 3px; background: var(--line-2); }
+.hx-meter-fill { position: absolute; inset-block: 0; inset-inline-start: 0; border-radius: 3px; background: var(--zone); transition: width 0.6s; }
+.hx-meter-target { position: absolute; top: -5px; bottom: -5px; width: 2px; margin-inline-start: -1px; border-radius: 1px; background: var(--ink); }
+.hx-zone-foot { font-size: 0.84rem; color: var(--ink-3); }
+
+/* ---------- الرئيسية: صف البطاقات الثلاث ---------- */
+.hx-row { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) minmax(0, 1fr); gap: var(--gap); }
+.hx-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 22px 26px 24px; display: flex; flex-direction: column; gap: 10px; min-width: 0; color: inherit; text-decoration: none; }
+.hx-card > header { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+.hx-card > header h2 { font-size: 0.95rem; font-weight: 600; color: var(--ink-2); }
+.hx-icon { width: 32px; height: 32px; border-radius: 10px; display: grid; place-items: center; background: var(--surface-2); color: var(--mint-ink); }
+.hx-big { font-family: var(--font-display); font-weight: 700; font-size: 1.6rem; line-height: 1.2; color: var(--ink); }
+.hx-sub { font-size: 0.86rem; color: var(--ink-3); line-height: 1.6; }
+.hx-pump.is-on .hx-icon { background: var(--water); color: #fff; }
+.hx-pump.is-on .hx-big { color: var(--water-ink); }
+.hx-progress { display: block; height: 6px; border-radius: 3px; background: var(--line-2); overflow: hidden; }
+.hx-progress > span { display: block; height: 100%; background: var(--water); transform-origin: right center; transition: transform 1s linear; }
+.hx-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 0; }
+.hx-stats dt { font-size: 0.78rem; color: var(--ink-3); }
+.hx-stats dd { margin: 4px 0 0; font-family: var(--font-display); font-weight: 700; font-size: 1.55rem; line-height: 1; color: var(--ink); }
+.hx-stats dd small { font-size: 0.5em; font-weight: 500; color: var(--ink-3); margin-inline-start: 2px; }
+.hx-forecast { transition: border-color 0.15s; }
+.hx-forecast:hover { border-color: var(--mint); }
+.hx-figure { font-family: var(--font-display); font-weight: 700; font-size: 2.6rem; line-height: 1; color: var(--ink); }
+.hx-figure small { font-size: 0.4em; color: var(--ink-3); margin-inline-start: 2px; }
+.hx-forecast.is-over .hx-figure { color: var(--rain); }
+.hx-scale { position: relative; height: 6px; border-radius: 3px; background: var(--line-2); }
+.hx-scale-fill { position: absolute; inset-block: 0; inset-inline-start: 0; border-radius: 3px; background: var(--rain); }
+.hx-scale-mark { position: absolute; top: -5px; bottom: -5px; width: 2px; margin-inline-start: -1px; background: var(--ink); border-radius: 1px; }
+
+/* ---------- الرئيسية: آخر الأحداث كخط زمني ---------- */
+.hx-events > header { justify-content: space-between; }
+.hx-events > header h2 { font-size: 1.05rem; color: var(--ink); }
+.hx-link { font-size: 0.86rem; font-weight: 600; color: var(--mint-ink); text-decoration: none; }
+.hx-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+.hx-timeline { list-style: none; margin: 0; padding: 0; }
+.hx-timeline li { display: grid; grid-template-columns: 56px 14px minmax(0, 1fr); align-items: center; gap: 12px; padding: 9px 0; position: relative; }
+.hx-timeline li + li { border-top: 1px solid var(--line-2); }
+.hx-timeline time { font-size: 0.84rem; color: var(--ink-3); }
+.hx-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ink-3); justify-self: center; }
+.hx-timeline .tone-water .hx-dot { background: var(--water); }
+.hx-timeline .tone-good .hx-dot { background: var(--good); }
+.hx-timeline .tone-warn .hx-dot { background: var(--warn); }
+.hx-timeline .tone-crit .hx-dot { background: var(--crit); }
+.hx-timeline .tone-rain .hx-dot { background: var(--rain); }
+.hx-ev { font-size: 0.94rem; color: var(--ink); }
+
+/* بطاقات المناطق القديمة لم تعد مستخدمة في الرئيسية */
+.tiles3 { display: none !important; }
+
+/* ---------- المناطق: بطاقات أنظف بلا تدرج لوني ---------- */
+.zc { border-radius: var(--r-lg); padding: 24px 26px 24px; box-shadow: var(--lift); }
+.zc::before { display: none; }
+.zc::after { content: ''; position: absolute; inset-inline: 0; top: 0; height: 3px; background: var(--zone); }
+.zc.is-selected { border-color: var(--line); box-shadow: 0 0 0 2px var(--zone); }
+.zc-value { color: var(--ink); }
+.zc-now { border: 1px solid var(--line-2); background: var(--surface-2); }
+
+/* ---------- القرار والطقس والري والأحداث: تفاصيل موحّدة ---------- */
+.verdict { border: 1px solid var(--line-2); }
+.tile .tile-value, .stats dd, .gauge-number { letter-spacing: -0.02em; }
+.stats { box-shadow: var(--lift); }
+.table th { font-size: 0.78rem; letter-spacing: 0; }
+
+
+/* ---------- القرار: دور الري كثلاث خانات متجاورة (الأول أولًا من اليمين) بدل صفوف فارغة الوسط ---------- */
+.queue { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.qrow { grid-template-columns: 34px minmax(0, 1fr); grid-template-areas: "pos name" "state state" "why why"; align-items: center; gap: 12px; padding: 18px 20px; }
+.qrow + .qrow { border-top: 0; border-inline-start: 1px solid var(--line); }
+.qrow .state { justify-self: start; }
+.qname b { font-family: var(--font-display); font-weight: 600; font-size: 1rem; }
+.qwhy { line-height: 1.6; }
+.verdict { padding: 22px 24px; }
+.verdict-act { font-size: 1.8rem; }
+@media (max-width: 900px) {
+  .queue { grid-template-columns: minmax(0, 1fr); }
+  .qrow + .qrow { border-inline-start: 0; border-top: 1px solid var(--line); }
+}
+
+
+/* ---------- الشريط العلوي: تنبيه انقطاع جهاز (يظهر فقط عند المشكلة) ---------- */
+.dev-alert { display: inline-flex; align-items: center; gap: 7px; padding: 7px 14px; border-radius: 999px; background: var(--crit-soft); color: var(--crit); font-size: 0.82rem; font-weight: 600; }
+.dev-alert::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+
+/* ---------- المناطق: تبويبات + منطقة واحدة بالتفصيل ---------- */
+.zx-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; }
+.zx-tab { position: relative; display: grid; grid-template-columns: 1fr auto; grid-template-areas: "name value" "state value"; align-items: center; gap: 4px 12px; padding: 18px 24px; text-decoration: none; color: inherit; transition: background 0.15s; }
+.zx-tab + .zx-tab { border-inline-start: 1px solid var(--line); }
+.zx-tab:hover { background: var(--surface-2); }
+.zx-tab.is-on { background: var(--surface-2); }
+.zx-tab.is-on::after { content: ''; position: absolute; inset-inline: 0; bottom: 0; height: 3px; background: var(--zone); }
+.zx-tab-name { grid-area: name; display: flex; align-items: center; gap: 9px; font-family: var(--font-display); font-weight: 600; font-size: 1rem; }
+.zx-tab .hx-state { grid-area: state; margin: 0; }
+.zx-tab-value { grid-area: value; font-family: var(--font-display); font-weight: 700; font-size: 1.9rem; line-height: 1; color: var(--ink); }
+.zx-tab-value small { font-size: 0.45em; color: var(--ink-3); font-weight: 500; }
+
+.zx-hero { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); grid-template-areas: "now act" "facts facts"; gap: 0; padding: 0; overflow: hidden; }
+.zx-hero h2 { font-size: 0.92rem; font-weight: 600; color: var(--ink-3); margin-bottom: 10px; }
+.zx-now-moisture { grid-area: now; padding: 26px 30px; display: flex; flex-direction: column; gap: 12px; }
+.zx-figure { font-family: var(--font-display); font-weight: 700; font-size: clamp(3.2rem, 6vw, 4.6rem); line-height: 1; letter-spacing: -0.03em; color: var(--zone); }
+.zx-figure small { font-size: 0.34em; color: var(--ink-3); font-weight: 500; margin-inline-start: 4px; }
+.zx-action { grid-area: act; padding: 26px 30px; border-inline-start: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+.zx-action-word { font-family: var(--font-display); font-weight: 700; font-size: 1.7rem; line-height: 1.2; color: var(--ink); }
+.zx-action.st-running .zx-action-word { color: var(--water-ink); }
+.zx-action .hx-progress { width: 100%; }
+.zx-reason { font-size: 0.95rem; color: var(--ink-2); line-height: 1.7; }
+.zx-facts { grid-area: facts; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 0; border-top: 1px solid var(--line); }
+.zx-facts > div { padding: 16px 30px; }
+.zx-facts > div + div { border-inline-start: 1px solid var(--line); }
+.zx-facts dt { font-size: 0.8rem; color: var(--ink-3); }
+.zx-facts dd { margin: 4px 0 0; font-family: var(--font-display); font-weight: 600; font-size: 1.2rem; color: var(--ink); }
+.zx-facts dd small { font-size: 0.7em; color: var(--ink-3); }
+.zx-runs .hx-ev { display: flex; flex-direction: column; gap: 2px; }
+.zx-run-meta { font-size: 0.82rem; color: var(--ink-3); }
+
+/* ---------- الطقس: بطاقة واحدة بأربع خانات ---------- */
+.wx-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; }
+.wx-grid > div { display: flex; flex-direction: column; gap: 6px; padding: 4px 22px; }
+.wx-grid > div:first-child { padding-inline-start: 0; }
+.wx-grid > div + div { border-inline-start: 1px solid var(--line); }
+.wx-grid dt { font-size: 0.82rem; color: var(--ink-3); }
+.wx-grid dd { margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 2.2rem; line-height: 1.05; color: var(--ink); }
+.wx-grid dd small { font-size: 0.42em; font-weight: 500; color: var(--ink-3); margin-inline-start: 3px; }
+.wx-grid .is-wet dd { color: var(--rain); }
+.split-weather { grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); }
+
+/* ---------- الري: ثلاث أرقام + جدول ---------- */
+.stats { grid-template-columns: repeat(3, minmax(0, 1fr)); border-radius: var(--r-lg); }
+.stats > div { padding: 20px 26px; }
+.stats dd { font-size: 2rem; font-weight: 700; color: var(--ink); }
+.table td { padding: 13px 10px; }
+
+/* ---------- الأحداث: نفس خط الرئيسية الزمني ---------- */
+.ev { padding: 14px 0; }
+.ev .ev-icon { border-radius: 10px; }
+.ev-body b { font-weight: 600; }
+
+
+/* ---------- القرار: القرار نفسه في الأعلى، والقواعد الثماني تحته في عمودين ---------- */
+.path-body { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+.path-body .verdict { order: -1; position: static; display: grid; grid-template-columns: auto 1fr; grid-template-areas: "label label" "act amount" "why why" "time time"; align-items: baseline; gap: 4px 16px; }
+.verdict-label { grid-area: label; }
+.verdict-act { grid-area: act; }
+.verdict-amount { grid-area: amount; }
+.verdict p { grid-area: why; }
+.verdict-time { grid-area: time; }
+.ladder { display: block; columns: 2; column-gap: 40px; }
+.ladder::before { display: none; }
+.rung { break-inside: avoid; padding: 10px 0; }
+@media (max-width: 900px) { .ladder { columns: 1; } }
+
+/* ---------- الجوال ---------- */
+@media (max-width: 1260px) {
+  .toplinks a { padding: 24px 10px; }
+}
+@media (max-width: 900px) {
+  .main { padding: 18px 16px 110px; }
+  .hx-row { grid-template-columns: minmax(0, 1fr); }
+  .hx-zone { padding: 16px 14px 18px; gap: 8px; }
+  .hx-zone-head { flex-wrap: wrap; gap: 6px 8px; }
+  .hx-state { margin-inline-start: 0; flex-basis: 100%; font-size: 0.74rem; }
+  .hx-zone-value { font-size: 1.8rem; }
+  .hx-zone-foot { font-size: 0.74rem; }
+  .hx-model { padding: 14px 6px 4px; }
+  .panel { padding: 20px 18px; }
+  .zx-tab { padding: 14px 12px; grid-template-columns: minmax(0, 1fr); grid-template-areas: "name" "value" "state"; }
+  .zx-tab-name { font-size: 0.86rem; }
+  .zx-tab-value { font-size: 1.5rem; }
+  .zx-tab .hx-state { font-size: 0.72rem; }
+  .zx-hero { grid-template-columns: minmax(0, 1fr); grid-template-areas: "now" "act" "facts"; }
+  .zx-action { border-inline-start: 0; border-top: 1px solid var(--line); }
+  .zx-now-moisture, .zx-action { padding: 20px; }
+  .zx-facts > div { padding: 14px 16px; }
+  .wx-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 18px; }
+  .wx-grid > div { padding: 0 14px; }
+  .wx-grid > div:nth-child(odd) { padding-inline-start: 0; border-inline-start: 0; }
+  .wx-grid dd { font-size: 1.8rem; }
+  .stats > div { padding: 14px 14px; }
+  .stats dd { font-size: 1.5rem; }
+  .split-weather { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* على الجوال المجسّم مقصوص على حدوده (CROP في FieldMap.jsx) فتتغير نسبة أبعاده */
+@media (max-width: 900px) { .hx-model .fieldmap { aspect-ratio: 820 / 574; max-height: none; } }

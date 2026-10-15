@@ -1,0 +1,23 @@
+# SAQAI AI environment (training + inference service)
+# Install inside a virtual environment:  pip install -r requirements.txt
+
+# Data
+pandas>=2.2
+numpy>=1.26
+
+# Models
+scikit-learn>=1.5
+lightgbm>=4.3
+xgboost>=2.1
+joblib>=1.4
+
+# Evaluation / plots
+matplotlib>=3.8
+
+# AI service (Phase 13)
+fastapi>=0.115
+uvicorn[standard]>=0.30
+pydantic>=2.7
+
+# Notebooks (optional, for exploration)
+jupyter>=1.0

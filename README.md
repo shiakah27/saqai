@@ -12,7 +12,7 @@ A smart multi-zone irrigation system that measures soil and weather on site, pre
 ![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-Random%20Forest-F7931E?logo=scikitlearn&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?logo=postgresql&logoColor=white)
-![License](https://img.shields.io/badge/license-MIT-green)
+
 
 [العربية](README.ar.md) · [Architecture](#architecture) · [AI model](#the-ai-model) · [Getting started](#getting-started) · [Docs](#documentation)
 

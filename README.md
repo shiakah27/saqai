@@ -1,10 +1,12 @@
 <div align="center">
 
-# SAQAI · سَقاي
+# SAQAI · سُقاي
 
 ### Intelligence behind every drop · كل قطرة بقرار
 
-A smart multi-zone irrigation system that measures soil and weather on site, predicts rain three hours ahead with a machine-learning model, decides **on the device** which zone needs water, and stops everything within seconds when rain actually falls.
+A smart multi-zone irrigation system for the green spaces of **Expo 2030 Riyadh**. It measures soil and weather on site, predicts rain three hours ahead with a machine-learning model, decides **on the device** which zone needs water, and stops everything within seconds when rain actually falls.
+
+Built by a student team in the Tuwaiq Academy × Misk hackathon.
 
 ![ESP32](https://img.shields.io/badge/ESP32-Arduino-00979D?logo=espressif&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-20-339933?logo=node.js&logoColor=white)
@@ -12,9 +14,12 @@ A smart multi-zone irrigation system that measures soil and weather on site, pre
 ![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-Random%20Forest-F7931E?logo=scikitlearn&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?logo=postgresql&logoColor=white)
+[![CI](https://github.com/shiakah27/saqai/actions/workflows/ci.yml/badge.svg)](https://github.com/shiakah27/saqai/actions/workflows/ci.yml)
 
 
-[العربية](README.ar.md) · [Architecture](#architecture) · [AI model](#the-ai-model) · [Getting started](#getting-started) · [Docs](#documentation)
+<a href="https://shiakah27.github.io/saqai/presentation/"><img src="https://img.shields.io/badge/%E2%96%B6%20Watch%20the%20presentation-15803d?style=for-the-badge" alt="Watch the presentation"></a>
+
+[Architecture](#architecture) · [AI model](#the-ai-model) · [Getting started](#getting-started) · [Docs](#documentation) · [Presentation](https://shiakah27.github.io/saqai/presentation/)
 
 <img src="docs/images/overview.png" alt="SAQAI dashboard: live farm model, three zones, pump, weather and rain forecast" width="900">
 
@@ -45,7 +50,7 @@ A smart multi-zone irrigation system that measures soil and weather on site, pre
 
 ## The problem
 
-Most irrigation runs on a timer. It waters soil that is already wet, and it waters an hour before the rain. In a city like Riyadh, where every litre counts, that is water poured away twice.
+Most irrigation runs on a timer. It waters soil that is already wet, and it waters an hour before the rain. In a city like Riyadh, where every litre counts, that is water poured away twice. A site like Expo 2030, with large planted areas that each dry out at their own pace, multiplies that waste.
 
 ## What SAQAI does
 
@@ -251,6 +256,8 @@ An Arabic, right-to-left interface, live over Server-Sent Events, with light and
   </tr>
 </table>
 
+<p align="center"><img src="docs/images/mobile.png" alt="Dashboard on a phone" width="260"></p>
+
 <sub>Screenshots use recorded data from the prototype.</sub>
 
 ### Reading the Decision page
@@ -347,7 +354,7 @@ Main settings in `backend/.env`. They are sent to ESP32 #2 on every poll, so no 
 | Variable | Default | Meaning |
 |---|---|---|
 | `DEVICE_API_KEY` | — | Shared key both boards send in `x-api-key` |
-| `ADMIN_API_KEY` | = device key | Key for the hidden maintenance page |
+| `ADMIN_API_KEY` | = device key | Key for the hidden maintenance page. Set your own, different from the device key |
 | `PUMP_FLOW_LPM` | 2.0 | Measured pump flow, used for litre estimates |
 | `RAIN_COOLDOWN_MINUTES` | 5 | Wait after rain stops before deciding again |
 | `MAX_DEFER_HOURS` | 3 | Longest deferral for forecast rain |
@@ -421,18 +428,19 @@ The detailed guides are in Arabic:
 | [`architecture.md`](docs/architecture.md) | Design decisions |
 | [`api-contract.md`](docs/api-contract.md) | Every endpoint and payload |
 | [`test-plan.md`](docs/test-plan.md) | How the system is tested |
+| [Presentation](https://shiakah27.github.io/saqai/presentation/) | The pitch deck, opens in the browser (arrow keys to navigate, F for full screen) |
 
 
 ## Team
 
-Built by the SAQAI team at Tuwaiq Academy x MISK for the Expo 2030 Riyadh challenge.
+Built by the SAQAI team at Tuwaiq Academy × Misk for the Expo 2030 Riyadh challenge.
 
 | Name | Role | LinkedIn |
 |---|---|---|
-| Saikha Alkhathlan | Team leader | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](MEMBER_1_LINKEDIN) |
+| Shaikha Alkhathlan | Team leader | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)]([MEMBER_1_LINKEDIN](https://www.linkedin.com/in/shaikha-alkhathlan/)) |
 | Rana Alsirhani | Team member | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](MEMBER_2_LINKEDIN) |
-| Renad Alonzi| Team member | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](MEMBER_3_LINKEDIN) |
-| Norah Alsuwailem | Team member | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](MEMBER_4_LINKEDIN) |
+| Renad Alonzi | Team member | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)]([MEMBER_3_LINKEDIN](https://www.linkedin.com/in/renad-alonzi-38061423b/)) |
+| Norah Alsuwailem | Team member | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)]([MEMBER_4_LINKEDIN](https://www.linkedin.com/in/norahalsuwaiilem?utm_source=share_via&utm_content=profile&utm_medium=member_ios)) |
 
 ## Acknowledgments
 

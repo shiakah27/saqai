@@ -437,10 +437,10 @@ Built by the SAQAI team at Tuwaiq Academy × Misk for the Expo 2030 Riyadh chall
 
 | Name | Role | LinkedIn |
 |---|---|---|
-| Shaikha Alkhathlan | Team leader | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)]([MEMBER_1_LINKEDIN](https://www.linkedin.com/in/shaikha-alkhathlan/)) |
-| Rana Alsirhani | Team member | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](MEMBER_2_LINKEDIN) |
-| Renad Alonzi | Team member | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)]([MEMBER_3_LINKEDIN](https://www.linkedin.com/in/renad-alonzi-38061423b/)) |
-| Norah Alsuwailem | Team member | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)]([MEMBER_4_LINKEDIN](https://www.linkedin.com/in/norahalsuwaiilem?utm_source=share_via&utm_content=profile&utm_medium=member_ios)) |
+| Shaikha Alkhathlan | Team leader | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/shaikha-alkhathlan/) |
+| Rana Alsirhani | Team member | — |
+| Renad Alonzi | Team member | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/renad-alonzi-38061423b/) |
+| Norah Alsuwailem | Team member | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/norahalsuwaiilem/) |
 
 ## Acknowledgments
 
@@ -449,6 +449,9 @@ Built by the SAQAI team at Tuwaiq Academy × Misk for the Expo 2030 Riyadh chall
 We are grateful to:
 
 - **[Misk Foundation](https://misk.org.sa)** and **[Tuwaiq Academy](https://tuwaiq.edu.sa)** for the program and the hackathon that made this project possible.
+- **Expo 2030 Riyadh** for the vision that inspired it: sustainable solutions for the cities of tomorrow.
+
+<sub>SAQAI is a student project. It is not an official product of Expo 2030 Riyadh, Misk Foundation or Tuwaiq Academy.</sub>
 - **Expo 2030 Riyadh** for the vision that inspired it: sustainable solutions for the cities of tomorrow.
 
 <sub>SAQAI is a student project. It is not an official product of Expo 2030 Riyadh, Misk Foundation or Tuwaiq Academy.</sub>
